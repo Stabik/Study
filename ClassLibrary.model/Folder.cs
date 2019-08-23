@@ -9,17 +9,17 @@ namespace ClassLibrary.model
     {
         public virtual int Id { get; set; }
         public virtual string NameFolder { get; set; }
-        public virtual Version Version { get; set; }
-        public virtual AccessRight Right { get; set; }
+        public virtual IList<Version> Version { get; set; }
+        public virtual RightAccess MyRightAccess { get; set; }
     }
-    public class FolderMap: ClassMap<Folder>
+    public class FolderMap : ClassMap<Folder>
     {
         public FolderMap()
         {
             Id(x => x.Id).GeneratedBy.HiLo("100");
-            Map(x => x.NameFolder).Length(50);            
-            HasOne(x => x.Version).Cascade.All().Constrained();
-            References(x => x.Right).Cascade.SaveUpdate();
+            Map(x => x.NameFolder).Length(50);
+            HasMany(x => x.Version).Inverse();
+            References(x => x.MyRightAccess).Cascade.SaveUpdate();
 
         }
     }

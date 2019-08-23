@@ -21,7 +21,7 @@ namespace ClassLibrary.model
             Id(x => x.Id).GeneratedBy.HiLo("100");
             Map(x => x.Buffer);
             Map(x => x.DateTime);
-            HasOne(x => x.Folder);
+            References(x => x.Folder).Cascade.SaveUpdate();
             References(x => x.Author).Cascade.SaveUpdate();
 
 

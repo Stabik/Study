@@ -10,9 +10,13 @@ namespace ClassLibrary.model
     {
         public virtual int Id { get; set; }
         public virtual string NameGroup { get; set; }
-        public virtual AccessRight Right { get; set; }
+        public virtual RightAccess MyRightAccess { get; set; }
 
         public virtual IList<Person> PersonList { get; set; }
+        public Group()
+        {
+            PersonList = new List<Person>();
+        }
     }
 
     public class GroupMap : ClassMap<Group>
@@ -22,7 +26,7 @@ namespace ClassLibrary.model
             Id(x => x.Id).GeneratedBy.HiLo("100");
             Map(x => x.NameGroup).Length(50);
             HasMany(x => x.PersonList).Inverse();
-            References(x => x.Right).Cascade.SaveUpdate();
+            References(x => x.MyRightAccess).Cascade.SaveUpdate();
         }
     }
 }

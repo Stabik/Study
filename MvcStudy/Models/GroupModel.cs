@@ -9,6 +9,9 @@ namespace MvcStudy.Models
     public class GroupModel
     {
         [DisplayName("Название группы")]
-        public string Login { get; set; }
+        public string NameGroup { get; set; }
+        public int Id { get; set; }
+       
+        public PersonModel personModels { get; set; }
     }
 }

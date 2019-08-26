@@ -11,6 +11,7 @@ namespace ClassLibrary.model
         public virtual Person Author { get; set; }
         public virtual byte[] Buffer { get; set; }
         public virtual string DocType { get; set; }// тип документа
+        
     }
     public class DocumentMap: SubclassMap<Document>
         {
@@ -20,6 +21,7 @@ namespace ClassLibrary.model
             Map(x => x.DocType);           
             Map(x => x.Buffer);
             Map(x => x.DateTime);
+           
         }
         }
 }

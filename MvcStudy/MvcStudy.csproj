@@ -184,15 +184,22 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\DocumentController.cs" />
+    <Compile Include="Controllers\FolderController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\SuperFolderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DocumentModel.cs" />
     <Compile Include="Models\EntityModel.cs" />
+    <Compile Include="Models\FolderModel.cs" />
     <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
+    <Compile Include="Models\SuperFolderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +208,16 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Person\Create.cshtml" />
+    <Content Include="Views\Group\Create.cshtml" />
+    <Content Include="Views\Person\LoadAllPerson.cshtml" />
+    <Content Include="Views\Document\Create.cshtml" />
+    <Content Include="Views\Document\LoadAllDocument.cshtml" />
+    <Content Include="Views\Folder\Create.cshtml" />
+    <Content Include="Views\Folder\LoadAllFolder.cshtml" />
+    <Content Include="Views\Document\LoadDocument.cshtml" />
+    <Content Include="Views\SuperFolder\LoadAllSuperFolder.cshtml" />
+    <Content Include="Views\SuperFolder\Create.cshtml" />
+    <Content Include="Views\Document\LoadAllDocumnetById.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -217,6 +234,7 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

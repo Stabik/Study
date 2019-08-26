@@ -25,10 +25,10 @@ namespace MvcStudy.Models
         [DisplayName("Подтверждение")]
         public string ConfirmPassword { get; set; }
 
-        public Group group;
-        public PersonModel()
-        {
-              group = new Group();
-    }
+        [DisplayName("Группа")]
+        //// public int Id { get; set; }
+        public GroupModel group { get; set; }
+        
+
     }
 }

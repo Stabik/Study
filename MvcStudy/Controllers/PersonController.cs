@@ -14,14 +14,18 @@ namespace MvcStudy.Controllers
         private PersonRepository personRepository;
         private GroupRepository groupRepository;
 
-        public PersonController(PersonRepository personRepository)
+        public PersonController(PersonRepository personRepository, GroupRepository groupRepository)
         {
             this.personRepository = personRepository;
-        }
+            this.groupRepository=groupRepository;
+    }
 
         public ActionResult Create()
         {
-            var model = new PersonModel();
+           var model = new PersonModel();
+            var models = groupRepository.LoadAll();
+            SelectList groups = new SelectList(models, "Id", "NameGroup");
+            ViewBag.Groups = groups;
             return View(model);
         }
 
@@ -32,20 +36,38 @@ namespace MvcStudy.Controllers
             {
                 return View(model);
             }
-            Group group = new Group()
-            {
-                NameGroup=model.group.ToString()
-            };
+            Group group = new Group();
+            group = groupRepository.Load(model.group.Id);
             var person = new Person
             {
                 Login = model.Login,
                 Password = model.Password,
-                Group = model.group
+                Group = group
+
             };
-            groupRepository.Save(group);
+
+
             personRepository.Save(person);
+            
+             
 
             return RedirectToAction("Index", "Home");
+        }
+     
+        public ActionResult LoadAllPerson()
+        {
+            
+            var PersonList= personRepository.LoadAll();
+
+
+            return View(PersonList);
+        }
+
+        public PartialViewResult PartialList()
+        {
+
+            
+            return PartialView(ViewBag.Groups);
         }
     }
 }

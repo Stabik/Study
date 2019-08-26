@@ -18,10 +18,7 @@ namespace ClassLibrary.model
         public virtual IList<Version> Version { get; set; }
 
         public virtual IList<Document> Document { get; set; }
-        public Person()
-        {
-            Group = new Group();
-        }
+      
     }
     public class PersonMap : ClassMap<Person>
     {

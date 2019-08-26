@@ -13,10 +13,7 @@ namespace ClassLibrary.model
         public virtual RightAccess MyRightAccess { get; set; }
 
         public virtual IList<Person> PersonList { get; set; }
-        public Group()
-        {
-            PersonList = new List<Person>();
-        }
+       
     }
 
     public class GroupMap : ClassMap<Group>

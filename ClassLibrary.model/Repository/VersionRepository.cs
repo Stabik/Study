@@ -6,7 +6,7 @@ using System.Text;
 namespace ClassLibrary.model.Repository
 {
     [Repository]
-    public class VersionRepository : Repository<Group>
+    public class VersionRepository : Repository<Version>
 
     {
         public VersionRepository(ISession session)

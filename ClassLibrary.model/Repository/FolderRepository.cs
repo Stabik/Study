@@ -6,7 +6,7 @@ using System.Text;
 namespace ClassLibrary.model.Repository
 {
     [Repository]
-    public class FolderRepository : Repository<Group>
+    public class FolderRepository : Repository<Folder>
 
     {
         public FolderRepository(ISession session)

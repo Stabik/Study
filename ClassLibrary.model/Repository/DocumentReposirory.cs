@@ -6,13 +6,13 @@ using System.Text;
 namespace ClassLibrary.model.Repository
 {
     [Repository]
-    public class DocumentReposirory : Repository<Group>
+    public class DocumentReposirory : Repository<Document>
 
     {
         public DocumentReposirory(ISession session)
             : base(session)
         {
         }
-        
+
     }
 }

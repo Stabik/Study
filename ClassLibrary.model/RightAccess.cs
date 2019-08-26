@@ -14,9 +14,9 @@ namespace ClassLibrary.model
         public virtual IList<Folder> Folder { get; set; }
 
     }
-    public class AccessRightMap: ClassMap<RightAccess>
+    public class RightAccessMap : ClassMap<RightAccess>
     {
-        public AccessRightMap()
+        public RightAccessMap()
         {
 
             Id(x => x.Id).GeneratedBy.HiLo("100");

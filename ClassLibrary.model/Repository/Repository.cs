@@ -50,6 +50,15 @@ namespace ClassLibrary.model.Repository
            
                
             }
-        }
+        //public virtual IList<T> LoadAllDoc(int id)
+        //{
+        //    var criteria =
+        //     session.CreateCriteria<T>()
+        //         .Add(Restrictions.Eq("Id", id));
+
+        //    var LoadAllEntity = criteria.List<T>();
+        //    return LoadAllEntity;
+        //}
+    }
     
 }

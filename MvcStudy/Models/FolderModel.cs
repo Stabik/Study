@@ -1,15 +1,17 @@
-﻿using System;
+﻿using ClassLibrary.model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
 namespace MvcStudy.Models
 {
-    public class FolderModel
+    public class FolderModel : EntityListModel<Folder>
     {
-        public  string NameFolder { get; set; }
-       public int Id { get; set; }
-        public  Version Version { get; set; }
-        public SuperFolderModel SuperFolderModel { get; set; }
+        public Folder Parent { get; set; }
+
+        public Folder CurrentFolder { get; set; }
+
+        public bool IsRootFolder { get; set; }
     }
 }

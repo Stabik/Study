@@ -1,4 +1,5 @@
 ﻿using ClassLibrary.model;
+using ClassLibrary.model.Filters;
 using ClassLibrary.model.Repository;
 using MvcStudy.Models;
 using System;
@@ -12,43 +13,58 @@ namespace MvcStudy.Controllers
     public class FolderController : Controller
     {
         private FolderRepository folderRepository;
+
         public FolderController(FolderRepository folderRepository)
         {
             this.folderRepository = folderRepository;
         }
-        public ActionResult LoadAllFolder()
-        {
-            var models = folderRepository.LoadAll();
-            return View(models);
-        }
-        // GET: Folder
-        public ActionResult Index()
-        {
-           
-            return View();
-        }
-        public ActionResult Create()
-        {
-            var folderModel = new FolderModel();
 
-            return View(folderModel);
-        }
-        [HttpPost]
-        public ActionResult Create(FolderModel model)
+        public ActionResult Create(long? parent)
         {
-
-            Folder Folder = new Folder
+            var model = new FolderEditModel
             {
-               
-                NameFolder = model.NameFolder
+                ParentId = parent
             };
-           
-            folderRepository.Save(Folder);
+            return View(model);
+        }
 
+        [HttpPost]
+        public ActionResult Create(FolderEditModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            Folder parent = null;
+            if (model.ParentId.HasValue)
+            {
+                parent = folderRepository.Load(model.ParentId.Value);
+            }
+            var folder = new Folder
+            {
+                Name = model.Name,
+                CreationDate = DateTime.Now,
+                Parent = parent
+            };
+            folderRepository.Save(folder);
+            return RedirectToAction("Index", new { parent = model.ParentId });
+        }
 
-            return RedirectToAction("Index", "Home");
-
-
+        public ActionResult Index(long? parent, FetchOptions fetchOptions)
+        {
+            Folder parentFolder = null;
+            if (parent.HasValue)
+            {
+                parentFolder = folderRepository.Load(parent.Value);
+            }
+            var model = new FolderModel
+            {
+                Items = folderRepository.Find(new FolderFilter { Parent = parentFolder }, fetchOptions),
+                CurrentFolder = parentFolder,
+                Parent = parentFolder != null ? parentFolder.Parent : null
+            };
+            model.IsRootFolder = parent == null && model.Parent == null;
+            return View("List", model);
         }
     }
 }

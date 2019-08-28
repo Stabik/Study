@@ -1,0 +1,42 @@
+﻿@using ClassLibrary.model
+@using MvcStudy.Extensions
+@model IEnumerable<ClassLibrary.model.Folder>
+
+@{
+    var parent = ViewData["Parent"] as Folder;
+    var isRootFolder = Convert.ToBoolean(ViewData["IsRootFolder"] ?? true);
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.SortLink("Название", "Name", "Index", "Folder", null)
+        </th>
+        <th>
+            @Html.SortLink("Дата создания", "CreationDate", "Index", "Folder", null)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CreationAuthor)
+        </th>*@
+    </tr>
+    @if (!isRootFolder)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("\\...", "Index", new { parent = (parent != null ? parent.Id : (long?)null )}, null)
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+    }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "Index", new { parent = item.Id }, null)
+            </td>
+            
+        </tr>
+    }
+
+</table>

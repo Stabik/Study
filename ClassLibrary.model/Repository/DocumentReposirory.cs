@@ -5,14 +5,14 @@ using System.Text;
 
 namespace ClassLibrary.model.Repository
 {
-    [Repository]
-    public class DocumentReposirory : Repository<Document>
+    //[Repository]
+    // public class DocumentReposirory : Repository<Document,DocumentFilter>
 
-    {
-        public DocumentReposirory(ISession session)
-            : base(session)
-        {
-        }
+    //    {
+    //        public DocumentReposirory(ISession session)
+    //            : base(session)
+    //        {
+    //        }
 
-    }
+    //    }
 }

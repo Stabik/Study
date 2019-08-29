@@ -9,17 +9,16 @@ namespace ClassLibrary.model
     {
         public virtual DateTime DateTime { get; set; }
         public virtual Person Author { get; set; }
-        public virtual byte[] Buffer { get; set; }
-        public virtual string DocType { get; set; }// тип документа
-        
+        public virtual byte[] Avatar { get; set; }
+
+
     }
     public class DocumentMap: SubclassMap<Document>
         {
         public DocumentMap()
         {
-            References(x => x.Author).Cascade.SaveUpdate();
-            Map(x => x.DocType);           
-            Map(x => x.Buffer);
+            References(x => x.Author).Cascade.SaveUpdate();                  
+            Map(x => x.Avatar);
             Map(x => x.DateTime);
            
         }

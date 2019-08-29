@@ -147,9 +147,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Database3.mdf" />
-    <Content Include="App_Data\Database3_log.ldf">
-      <DependentUpon>Database3.mdf</DependentUpon>
+    <Content Include="App_Data\Database1.mdf" />
+    <Content Include="App_Data\Database1_log.ldf">
+      <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -236,9 +236,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Extensions\HtmlExtensions.cs" />
+    <Compile Include="Files\StreamHelper.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DocumentEditModel.cs" />
     <Compile Include="Models\DocumentModel.cs" />
     <Compile Include="Models\EntityListModel.cs" />
     <Compile Include="Models\EntityModel.cs" />
@@ -259,10 +261,7 @@
     <Content Include="Views\Group\Create.cshtml" />
     <Content Include="Views\Person\LoadAllPerson.cshtml" />
     <Content Include="Views\Document\Create.cshtml" />
-    <Content Include="Views\Document\LoadAllDocument.cshtml" />
     <Content Include="Views\Folder\Create.cshtml" />
-    <Content Include="Views\Document\LoadDocument.cshtml" />
-    <Content Include="Views\Document\LoadAllDocumnetById.cshtml" />
     <Content Include="Views\Folder\Grid.cshtml" />
     <Content Include="Views\Folder\List.cshtml" />
     <Content Include="Views\Shared\SortLink.cshtml" />

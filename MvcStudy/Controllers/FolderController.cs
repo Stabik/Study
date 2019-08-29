@@ -1,6 +1,7 @@
 ﻿using ClassLibrary.model;
 using ClassLibrary.model.Filters;
 using ClassLibrary.model.Repository;
+using MvcStudy.Files;
 using MvcStudy.Models;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,12 @@ namespace MvcStudy.Controllers
     public class FolderController : Controller
     {
         private FolderRepository folderRepository;
+        private DocumentReposirory documentRepository;
 
-        public FolderController(FolderRepository folderRepository)
+        public FolderController(FolderRepository folderRepository, DocumentReposirory documentRepository)
         {
             this.folderRepository = folderRepository;
+            this.documentRepository = documentRepository;
         }
 
         public ActionResult Create(long? parent)
@@ -65,6 +68,11 @@ namespace MvcStudy.Controllers
             };
             model.IsRootFolder = parent == null && model.Parent == null;
             return View("List", model);
+        }
+        public ActionResult GetAvatar(long id)
+        {
+            var user = documentRepository.Load(id);
+            return File(user.Avatar, "application/octet-stream", $"{user.Name}.jpeg");
         }
     }
 }

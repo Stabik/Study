@@ -26,7 +26,7 @@ namespace MvcStudy.Models
         public string ConfirmPassword { get; set; }
 
         [DisplayName("Группа")]
-        //// public int Id { get; set; }
+        
         public GroupModel group { get; set; }
         
 

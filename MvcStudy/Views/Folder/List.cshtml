@@ -10,7 +10,10 @@
 <h2>List</h2>
 
 <p>
-    @Html.ActionLink("Добавить", "Create", new { parent = parentId })
+    @Html.ActionLink("Добавить Папку", "Create", new { parent = parentId })
+</p>
+<p>
+    @Html.ActionLink("Добавить Документ","Create","Document",new {parent =parentId },null)
 </p>
 
 <div style="height:20px;"></div>

@@ -20,54 +20,40 @@ namespace MvcStudy.Controllers
             this.groupRepository=groupRepository;
     }
 
-        //    public ActionResult Create()
-        //    {
-        //       var model = new PersonModel();
-        //        var models = groupRepository.LoadAll();
-        //        SelectList groups = new SelectList(models, "Id", "NameGroup");
-        //        ViewBag.Groups = groups;
-        //        return View(model);
-        //    }
+        public ActionResult Create()
+        {
+            var model = new PersonModel();
+            var models = groupRepository.LoadAll();
+            SelectList groups = new SelectList(models, "Id", "NameGroup");
+            ViewBag.Groups = groups;
+            return View(model);
+        }
 
-        //    [HttpPost]
-        //    public ActionResult Create(PersonModel model)
-        //    {
-        //        if (!ModelState.IsValid)
-        //        {
-        //            return View(model);
-        //        }
-        //        Group group = new Group();
-        //        group = groupRepository.Load(model.group.Id);
-        //        var person = new Person
-        //        {
-        //            Login = model.Login,
-        //            Password = model.Password,
-        //            Group = group
+        [HttpPost]
+        public ActionResult Create(PersonModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            Group group = new Group();
+            group = groupRepository.Load(model.group.Id);
+            var person = new Person
+            {
+                Login = model.Login,
+                Password = model.Password,
+                Group = group
 
-        //        };
-
-
-        //        personRepository.Save(person);
+            };
 
 
-
-        //        return RedirectToAction("Index", "Home");
-        //    }
-
-        //    public ActionResult LoadAllPerson()
-        //    {
-
-        //        var PersonList= personRepository.LoadAll();
+            personRepository.Save(person);
 
 
-        //        return View(PersonList);
-        //    }
 
-        //    public PartialViewResult PartialList()
-        //    {
+            return RedirectToAction("Index", "Home");
+        }
 
-
-        //        return PartialView(ViewBag.Groups);
-        //    }
+        
     }
 }

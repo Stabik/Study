@@ -5,6 +5,7 @@
 @{
     var parent = ViewData["Parent"] as Folder;
     var isRootFolder = Convert.ToBoolean(ViewData["IsRootFolder"] ?? true);
+    var doc = new Document();
 }
 
 <table class="table">
@@ -15,15 +16,14 @@
         <th>
             @Html.SortLink("Дата создания", "CreationDate", "Index", "Folder", null)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.CreationAuthor)
-        </th>*@
+        <th>Документ</th>
+
     </tr>
     @if (!isRootFolder)
     {
         <tr>
             <td>
-                @Html.ActionLink("\\...", "Index", new { parent = (parent != null ? parent.Id : (long?)null )}, null)
+                @Html.ActionLink("\\...", "Index", new { parent = (parent != null ? parent.Id : (long?)null) }, null)
             </td>
             <td></td>
             <td></td>
@@ -31,12 +31,30 @@
     }
     @foreach (var item in Model)
     {
+
         <tr>
+           
             <td>
                 @Html.ActionLink(item.Name, "Index", new { parent = item.Id }, null)
             </td>
-            
+            <td>
+                @Html.DisplayFor(model => item.CreationDate)
+            </td>
+            <td>
+                @if (item is Document)
+                {
+                    doc = (Document)item;
+                    if (doc.Avatar != null)
+                    {
+                        <img src="@Url.Action("GetAvatar", new { id = item.Id })" style="width:24px;" />
+                        @Html.ActionLink("Скачать", "GetAvatar", new { id = item.Id }, null)
+                    }
+                }
+                else
+                { }
+            </td>
         </tr>
     }
 
+    
 </table>

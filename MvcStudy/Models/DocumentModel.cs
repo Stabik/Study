@@ -6,11 +6,15 @@ using System.Web;
 
 namespace MvcStudy.Models
 {
-    public class DocumentModel:FolderModel
+    public class DocumentModel:EntityModel<Document>
     {
         public  DateTime DateTime { get; set; }
+        public string Name { get; set; }
+        public Folder Parent { get; set; }
         public  Person Author { get; set; }
-        public  byte[] Buffer { get; set; }
-        public  string DocType { get; set; }
+        public HttpPostedFileWrapper Avatar { get; set; }
+        public long? ParentId { get; set; }
+        
+       
     }
 }

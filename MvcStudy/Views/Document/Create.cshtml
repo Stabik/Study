@@ -2,25 +2,26 @@
 
 @{
     ViewBag.Title = "Create";
+     Html.EnableClientValidation();
 }
 
 <h2>Create</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    @Html.LabelFor(model => model.NameFolder, "Название")
+    @Html.LabelFor(model => model.Name, "Название")
     <br />
-    @Html.EditorFor(model => model.NameFolder)
-    <br /><br />
-  
-    <br /><br />
+    @Html.EditorFor(model => model.Name)
+    <br />
+    <br />
     <div class="form-group">
-        @Html.LabelFor(model => model.SuperFolderModel, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.SuperFolderModel.Id, ViewBag.Groups as SelectList)
-
+            <input type="file" name="@ViewData.TemplateInfo.GetFullHtmlFieldName("Avatar")" />
+            @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
         </div>
     </div>
+    @Html.HiddenFor(m => m.ParentId)
 
 
     <div>

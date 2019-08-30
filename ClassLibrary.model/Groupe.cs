@@ -1,5 +1,6 @@
 ﻿
 using ClassLibrary.model;
+using ClassLibrary.model.Filters;
 using FluentNHibernate.Mapping;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,7 @@ namespace ClassLibrary.model
     public class Group
     {
         public virtual int Id { get; set; }
+        [FastSearch]
         public virtual string NameGroup { get; set; }
         public virtual RightAccess MyRightAccess { get; set; }
 

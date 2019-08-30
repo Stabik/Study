@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ClassLibrary.model.Filters
+namespace ClassLibrary.model
 {
-    public class DocumentFilter : FolderFilter
+    public class ReportClass
     {
+
     }
 }

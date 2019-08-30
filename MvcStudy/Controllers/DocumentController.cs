@@ -13,13 +13,15 @@ namespace MvcStudy.Controllers
 {
    public class DocumentController : Controller
     {
-        private DocumentReposirory documentRepository;        
-       
-        public DocumentController(DocumentReposirory documentRepository)
+        private DocumentReposirory documentRepository;
+        private FolderRepository folderRepository;
+
+        public DocumentController(DocumentReposirory documentRepository, FolderRepository folderRepository)
         {
             this.documentRepository = documentRepository;
-           
-            
+            this.folderRepository = folderRepository;
+
+
         }
 
         //        // GET: Document
@@ -28,28 +30,31 @@ namespace MvcStudy.Controllers
 
             return View();
         }
-        public ActionResult Create()
+        public ActionResult Create(long? parent)
         {
-            var docModel = new DocumentModel();            
+            var docModel = new DocumentEditModel
+            {
+                ParentId = parent
+            };
             return View(docModel);
         }
         [HttpPost]
-        public ActionResult Create(DocumentModel model)
+        public ActionResult Create(DocumentEditModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-            Document docParent = null;
+            Folder parent = null;
             if (model.ParentId.HasValue)
             {
-                docParent = documentRepository.Load(model.ParentId.Value);
+                parent = folderRepository.Load(model.ParentId.Value);
             }
             var doc = new Document
             {
                 Name = model.Name,
                 CreationDate= DateTime.Now,
-               Parent= docParent,
+               Parent= parent,
                 Avatar = model.Avatar != null && model.Avatar.InputStream != null ?
                         model.Avatar.InputStream.ToByteArray() :
                         null

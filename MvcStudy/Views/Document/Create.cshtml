@@ -1,4 +1,4 @@
-﻿@model MvcStudy.Models.DocumentModel
+﻿@model MvcStudy.Models.DocumentEditModel
 
 @{
     ViewBag.Title = "Create";
@@ -21,7 +21,7 @@
             @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
         </div>
     </div>
-    @Html.HiddenFor(m => m.ParentId)
+    @Html.HiddenFor(model => model.ParentId)
 
 
     <div>

@@ -13,9 +13,6 @@ namespace MvcStudy.Models
         [Required]
         [DisplayName("Название папки")]
         public string Name { get; set; }
-
-        public HttpPostedFileWrapper Avatar { get; set; }
-
         public long? ParentId { get; set; }
     }
 }

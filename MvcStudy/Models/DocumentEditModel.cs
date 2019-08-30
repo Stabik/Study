@@ -8,13 +8,9 @@ using System.Web;
 
 namespace MvcStudy.Models
 {
-    public class DocumentEditModel: EntityModel<Folder>
+    public class DocumentEditModel: FolderEditModel
     {
-        [Required]
-        [DisplayName("Название папки")]
-        public string Name { get; set; }
-
-        public long? ParentId { get; set; }
+    
         public HttpPostedFileWrapper Avatar { get; set; }
     }
 }

@@ -4,11 +4,10 @@ using System.Text;
 
 namespace ClassLibrary.model.Filters
 {
-    public class FolderFilter : BaseFilter
+   public class ReportFilter:BaseFilter
     {
-        public string Name { get; set; }
-        public Folder Parent { get; set; }
         public Range<DateTime> CreationDate { get; set; }
-        public Person CreationAuthor { get; set; }
+        public IList<Document> DocList { get; set; }
+        public IList<Folder> FolderList { get; set; }
     }
 }

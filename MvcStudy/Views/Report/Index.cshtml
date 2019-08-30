@@ -1,0 +1,37 @@
+﻿@model MvcStudy.Models.ReportModel
+
+@{
+    ViewBag.Title = "ReportIndex";
+}
+
+<h2>ReportIndex</h2>
+<table class="table">
+   <tr>
+       @Html.Partial("_SerchingByDate")
+   </tr>
+    <tr>
+        <th>
+           Всего Файлов было создано
+        </th>
+        <th>
+           Всего Папок 
+        </th>
+        <th>
+            Всего Документов
+        </th>
+        
+        <th></th>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AllFilesAdded)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AllFolders)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AllDocuments)
+        </th>
+    </tr>
+
+</table>

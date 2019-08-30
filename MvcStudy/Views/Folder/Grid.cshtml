@@ -35,7 +35,17 @@
         <tr>
            
             <td>
-                @Html.ActionLink(item.Name, "Index", new { parent = item.Id }, null)
+                @if (item is Document)
+                {
+                    doc = (Document)item;
+                    <img src="~/Content/images/doc.jpg" style="width:24px"/> @Html.DisplayFor(model => item.Name)
+
+                }
+                else
+                {
+                    <img src="~/Content/images/Folder.jpg" style="width:24px"/> @Html.ActionLink(item.Name, "Index", new { parent = item.Id }, null)
+                }
+
             </td>
             <td>
                 @Html.DisplayFor(model => item.CreationDate)

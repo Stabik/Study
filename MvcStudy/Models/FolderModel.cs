@@ -11,7 +11,7 @@ namespace MvcStudy.Models
         public Folder Parent { get; set; }
 
         public Folder CurrentFolder { get; set; }
-        public byte[] Avatar { get; set; }
+       
 
         public bool IsRootFolder { get; set; }
         public string Name { get; set; }

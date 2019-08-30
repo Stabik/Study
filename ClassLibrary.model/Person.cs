@@ -1,4 +1,5 @@
-﻿using FluentNHibernate.Mapping;
+﻿using ClassLibrary.model.Filters;
+using FluentNHibernate.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,14 +9,14 @@ namespace ClassLibrary.model
    public class Person
     {
         public virtual int Id { get; set; }
-        
+        [FastSearch]
         public virtual string Login{ get; set; }
         public virtual string Password { get; set; }
         public virtual RightAccess MyRightAccess { get; set; }
 
         public virtual Group Group { get; set; }
 
-        public virtual IList<Version> Version { get; set; }
+        
 
         public virtual IList<Document> Document { get; set; }
       
@@ -29,7 +30,7 @@ namespace ClassLibrary.model
             Map(x => x.Password).Length(50);
             References(x => x.Group).Cascade.SaveUpdate();
             References(x => x.MyRightAccess).Cascade.SaveUpdate();
-            HasMany(x => x.Version).Inverse();
+           
             HasMany(x => x.Document).Inverse();
         }
     }

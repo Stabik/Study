@@ -1,4 +1,5 @@
-﻿using FluentNHibernate.Mapping;
+﻿using ClassLibrary.model.Filters;
+using FluentNHibernate.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,7 @@ namespace ClassLibrary.model
     public class RightAccess
     {
         public virtual int Id { get; set; }
+        [FastSearch]
         public virtual int MyRightAccess { get; set; }
         public virtual IList<Group> GroupList { get; set; }
         public virtual IList<Person> Person { get; set; }

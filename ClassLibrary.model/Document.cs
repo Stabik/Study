@@ -20,7 +20,7 @@ namespace ClassLibrary.model
         public DocumentMap()
         {
             References(x => x.Author).Cascade.SaveUpdate();                  
-            Map(x => x.Avatar);
+            Map(x => x.Avatar).Length(int.MaxValue);
             
            
         }

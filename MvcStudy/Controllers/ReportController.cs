@@ -13,34 +13,42 @@ namespace MvcStudy.Controllers
     public class ReportController : Controller
     {
         private FolderRepository folderRepository;
-        private DocumentReposirory documentRepository;
-        public ReportController(FolderRepository folderRepository, DocumentReposirory documentRepository)
+       
+        public ReportController(FolderRepository folderRepository)
         {
             this.folderRepository = folderRepository;
-            this.documentRepository = documentRepository;
+           
+        }
+        public ActionResult Index()
+        {
+          
+            return View();
         }
 
-       
+       [HttpPost]
         public ActionResult Index(DateTime? startDate, DateTime? endDate) 
 
         {
+           
             var folderList = folderRepository.GetAllFoldersByDate(startDate, endDate);
-            List<Document> docList = new List<Document>();
-           foreach(var fold in folderList)
-            {
-                if(fold is Document)
+                List<Document> docList = new List<Document>();
+                foreach (var fold in folderList)
                 {
-                    docList.Add((Document)fold);
-                }
+                    if (fold is Document)
+                    {
+                        docList.Add((Document)fold);
+                    }
 
-            }
-            var reportModel = new ReportModel
-            {
-                AllDocuments = docList.Count,
-                AllFilesAdded = folderList.Count,
-                AllFolders = folderList.Count - docList.Count
-            };
+                }
+                var reportModel = new ReportModel
+                {
+                    AllDocuments = docList.Count,
+                    AllFilesAdded = folderList.Count,
+                    AllFolders = folderList.Count - docList.Count
+                };
             return View(reportModel);
+
+
         }
     }
 }

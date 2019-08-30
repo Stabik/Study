@@ -271,7 +271,7 @@
     <Content Include="Views\Shared\SortLink.cshtml" />
     <Content Include="Views\Folder\Filter.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
-    <Content Include="Views\Shared\_SerchingByDate.cshtml" />
+    <Content Include="Views\Report\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
